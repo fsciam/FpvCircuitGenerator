@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.github.travijuu:numberpicker-1.0.7">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/numberpicker-1.0.7.aar/1f6a512770c111a980e33b21f547d692/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/numberpicker-1.0.7.aar/1f6a512770c111a980e33b21f547d692/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.travijuu/numberpicker/1.0.7/5934fd944fbeaa37ef284017b759c2a05681a3ee/numberpicker-1.0.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

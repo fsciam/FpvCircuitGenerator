@@ -1,0 +1,8 @@
+
+|squid:S1450"[Remove the "flags_picker" field and declare it as a local variable in the relevant methods.(²Ãý¾ûÿÿÿÿ8á¤ª„¿,
+ysquid:S00116"WRename this field "flags_picker" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²Ãý¾ûÿÿÿÿ8¨Ù¦„¿,
+jsquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(²Ú±Ž8´Ó¤„¿,
+Zsquid:UselessImportCheck"8Remove this unused import 'javax.xml.datatype.Duration'.(®Ð˜š
+ysquid:S00116"WRename this field "gates_picker" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú»©»ÿÿÿÿÿ8¨Ù¦„¿,
+Vsquid:UselessImportCheck"4Remove this unused import 'android.widget.EditText'.(†Å›Ú
+|squid:S1450"[Remove the "gates_picker" field and declare it as a local variable in the relevant methods.(ú»©»ÿÿÿÿÿ8„É©„¿,

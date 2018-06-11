@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Fpv Circuit Generator</string>
+    <string name="settings">Settings</string>
+    <string name="flag">Flag</string>
+    <string name="gate">Gate</string>
+    <string name="generate">Generate</string>
+    <string name="zero">0</string>
+</resources>
