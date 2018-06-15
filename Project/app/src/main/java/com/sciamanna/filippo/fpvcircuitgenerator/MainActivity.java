@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             //Create an alert dialog that contains all the info
             AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
             alertDialog.setTitle("Help");
-            alertDialog.setMessage("");
+            alertDialog.setMessage(getResources().getString(R.string.help_message));
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
