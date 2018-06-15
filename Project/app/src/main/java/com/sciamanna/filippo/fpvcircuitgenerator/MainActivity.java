@@ -1,27 +1,38 @@
 package com.sciamanna.filippo.fpvcircuitgenerator;
 
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
-import com.travijuu.numberpicker.library.Enums.ActionEnum;
-import com.travijuu.numberpicker.library.Interface.ValueChangedListener;
 import com.travijuu.numberpicker.library.NumberPicker;
-import android.widget.Toast;
 
-import javax.xml.datatype.Duration;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int gates=0;
-    private int flags=0;
-    private NumberPicker gates_picker;
-    private NumberPicker flags_picker;
+
+    private NumberPicker turns_picker;
+    private SeekBar spykeness;
+    private SeekBar irregularity;
+    private ImageButton previous;
+    private ImageButton next;
+    private ImageView circuit;
+    private ArrayList<Path> pathArrayList;
+    private int current_circuit;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -33,8 +44,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(item.getItemId() == R.id.settings)
-            this.startActivity(new Intent(this,SettingsActivity.class));
+        if(item.getItemId() == R.id.help)
+        {
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("Help");
+            alertDialog.setMessage("");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -45,44 +67,87 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        gates_picker=findViewById(R.id.gates_number);
-        flags_picker=findViewById(R.id.flags_number);
+        turns_picker=findViewById(R.id.turns_number);
+        spykeness=findViewById(R.id.spyke_seek);
+        irregularity=findViewById(R.id.irregular_seek);
+        previous=findViewById(R.id.previous);
+        next=findViewById(R.id.next);
+        circuit =findViewById(R.id.circuit);
 
+        Bitmap bitmap = Bitmap.createBitmap(377, 314, Bitmap.Config.ARGB_8888);
+        circuit.setImageBitmap(bitmap);
 
-        gates_picker.setMin(0);
-        gates_picker.setMax(10);
+        turns_picker.setMin(3);
+        turns_picker.setMax(50);
+        turns_picker.setValue(3);
 
-        flags_picker.setMin(3);
-        flags_picker.setMax(10);
-        flags_picker.setValue(3);
+        spykeness.setMax(10);
+        spykeness.setProgress(1);
 
+        irregularity.setMax(10);
+        spykeness.setProgress(1);
+        pathArrayList=new ArrayList<>();
 
-        flags_picker.setValueChangedListener(new ValueChangedListener() {
-            @Override
-            public void valueChanged(int value, ActionEnum action) {
-                flags=value;
-            }
-        });
+        next.setActivated(false);
+        previous.setActivated(false);
 
-        gates_picker.setValueChangedListener(new ValueChangedListener() {
-            @Override
-            public void valueChanged(int value, ActionEnum action) {
-                gates=value;
-            }
-        });
-
-        gates=gates_picker.getValue();
-        flags=flags_picker.getValue();
+        current_circuit=0;
     }
 
     /**
      * On click on generate button the method launch an AsyncTask that generate and draws a racing track
-     * @param view view passed by the caller
+     * @param view circuit passed by the caller
      */
     public void generateTrack(View view) {
 
+            new AsyncCreation(this,turns_picker.getValue(),189,157,spykeness.getProgress()/10.0,irregularity.getProgress()/10,75).execute();
+    }
 
-            Toast.makeText(this,"gates:"+gates+"\nflags:"+flags,Toast.LENGTH_LONG).show();
-            new AsyncCreation(this,flags,gates).execute();
+    public void addPath(Path path)
+    {
+        pathArrayList.add(path);
+        current_circuit=pathArrayList.size()-1;
+        previous.setActivated(true);
+        next.setActivated(false);
+    }
+
+    private void drawPath(Path path)
+    {
+        Bitmap bitmap = Bitmap.createBitmap(377, 314, Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(Color.BLACK);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(1);
+        canvas.drawPath(path,paint);
+        circuit.setImageBitmap(bitmap);
+    }
+
+    public void previousCircuit(View view) {
+        System.out.println(current_circuit);
+        if(current_circuit!=0)
+        {
+
+            current_circuit-=1;
+            drawPath(pathArrayList.get(current_circuit));
+        }
+        if(current_circuit==0)
+            previous.setActivated(false);
+        else
+            previous.setActivated(true);
+    }
+
+    public void nextCircuit(View view) {
+
+        if(current_circuit+1<pathArrayList.size())
+        {
+            current_circuit+=1;
+            drawPath(pathArrayList.get(current_circuit));
+        }
+        if(current_circuit==pathArrayList.size()-1)
+            next.setActivated(false);
+        else
+            next.setActivated(true);
     }
 }
