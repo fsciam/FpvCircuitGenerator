@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:numberpicker="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.sciamanna.filippo.fpvcircuitgenerator.MainActivity">
@@ -10,7 +9,7 @@
     <TextView
         android:id="@+id/flag_textView"
         android:layout_width="87dp"
-        android:layout_height="29dp"
+        android:layout_height="44dp"
 
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -25,7 +24,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.736" />
+        app:layout_constraintVertical_bias="0.733" />
 
     <ImageView
         android:id="@+id/circuit"
@@ -84,18 +83,18 @@
     <com.travijuu.numberpicker.library.NumberPicker
         android:id="@+id/turns_number"
         android:layout_width="130dp"
-        android:layout_height="39dp"
+        android:layout_height="44dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.752" />
+        app:layout_constraintVertical_bias="0.732" />
 
     <TextView
         android:id="@+id/textView"
@@ -128,11 +127,11 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.892" />
+        app:layout_constraintVertical_bias="0.86" />
 
 
     <SeekBar
@@ -144,14 +143,13 @@
 
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="1.0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintVertical_bias="0.983" />
 
     <TextView
         android:id="@+id/textView2"
@@ -168,7 +166,7 @@
         app:layout_constraintHorizontal_bias="0.302"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
+        app:layout_constraintVertical_bias="0.924" />
 
     <TextView
         android:id="@+id/textView3"
@@ -180,12 +178,15 @@
         android:layout_marginTop="8dp"
         android:text="@string/irregularity"
         android:textSize="23sp"
-        numberpicker:layout_constraintBottom_toBottomOf="parent"
-        numberpicker:layout_constraintEnd_toEndOf="parent"
-        numberpicker:layout_constraintHorizontal_bias="0.294"
-        numberpicker:layout_constraintStart_toStartOf="parent"
-        numberpicker:layout_constraintTop_toTopOf="parent"
-        numberpicker:layout_constraintVertical_bias="0.846" />
+
+        app:layout_constraintHorizontal_bias="0.302"
+        app:layout_constraintVertical_bias="0.81"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <ImageButton
         android:id="@+id/previous"

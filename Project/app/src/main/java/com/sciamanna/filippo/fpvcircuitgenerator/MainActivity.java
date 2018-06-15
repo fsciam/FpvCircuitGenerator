@@ -7,13 +7,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.travijuu.numberpicker.library.NumberPicker;
+
 
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(item.getItemId() == R.id.help)
         {
+            //Create an alert dialog that contains all the info
             AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
             alertDialog.setTitle("Help");
             alertDialog.setMessage("");
@@ -58,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.show();
         }
 
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -65,8 +70,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
+
+        //Load a custom layout for the action bar
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayUseLogoEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(false);
+
+        ActionBar.LayoutParams lp1 = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
+        View customNav = LayoutInflater.from(this).inflate(R.layout.custom_titlebar_layout, null);
+
+        actionBar.setCustomView(customNav, lp1);
+
+        //Create various object
         turns_picker=findViewById(R.id.turns_number);
         spykeness=findViewById(R.id.spyke_seek);
         irregularity=findViewById(R.id.irregular_seek);
@@ -74,18 +96,20 @@ public class MainActivity extends AppCompatActivity {
         next=findViewById(R.id.next);
         circuit =findViewById(R.id.circuit);
 
+        //Set a blank bitmap inside the imageview
         Bitmap bitmap = Bitmap.createBitmap(377, 314, Bitmap.Config.ARGB_8888);
         circuit.setImageBitmap(bitmap);
 
+        //Set various options
         turns_picker.setMin(3);
         turns_picker.setMax(50);
         turns_picker.setValue(3);
 
         spykeness.setMax(10);
-        spykeness.setProgress(1);
+        spykeness.setProgress(0);
 
         irregularity.setMax(10);
-        spykeness.setProgress(1);
+        spykeness.setProgress(0);
         pathArrayList=new ArrayList<>();
 
         next.setActivated(false);
@@ -100,17 +124,27 @@ public class MainActivity extends AppCompatActivity {
      */
     public void generateTrack(View view) {
 
-            new AsyncCreation(this,turns_picker.getValue(),189,157,spykeness.getProgress()/10.0,irregularity.getProgress()/10,75).execute();
+            new AsyncCreation(this,turns_picker.getValue(),189,157,spykeness.getProgress(),irregularity.getProgress()/10,75).execute();
     }
 
+    /**
+     * Adds the last path generated to the list of generated path. The list can contain a maximum of 50 paths
+     * @param path path to be added
+     */
     public void addPath(Path path)
     {
+        if(pathArrayList.size()==50)
+            pathArrayList.remove(0);
         pathArrayList.add(path);
         current_circuit=pathArrayList.size()-1;
         previous.setActivated(true);
         next.setActivated(false);
     }
 
+    /**
+     * Draws the selected path inside the ImageView
+     * @param path path to be drawn
+     */
     private void drawPath(Path path)
     {
         Bitmap bitmap = Bitmap.createBitmap(377, 314, Bitmap.Config.ARGB_8888);
@@ -124,8 +158,12 @@ public class MainActivity extends AppCompatActivity {
         circuit.setImageBitmap(bitmap);
     }
 
+    /**
+     * Draws the previous circuit, if it exists
+     * @param view view that calls the method
+     */
     public void previousCircuit(View view) {
-        System.out.println(current_circuit);
+
         if(current_circuit!=0)
         {
 
@@ -137,7 +175,10 @@ public class MainActivity extends AppCompatActivity {
         else
             previous.setActivated(true);
     }
-
+    /**
+     * Draws the next circuit, if it exists
+     * @param view view that calls the method
+     */
     public void nextCircuit(View view) {
 
         if(current_circuit+1<pathArrayList.size())

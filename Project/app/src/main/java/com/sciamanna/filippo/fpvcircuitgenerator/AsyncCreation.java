@@ -9,12 +9,12 @@ import android.graphics.Path;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
-import com.jjoe64.graphview.series.DataPoint;
+
 
 import java.lang.ref.WeakReference;
 import java.util.Random;
 
-import static java.lang.Math.abs;
+
 
 
 /**
@@ -23,26 +23,33 @@ import static java.lang.Math.abs;
 
 public class AsyncCreation extends AsyncTask<Void,Void,Path> {
 
-    private final int center_y;
-    private final int center_x;
-    private final float radius;
-    private double spyke;
+    private final int cY;
+    private final int cX;
+    private final float averageRadius;
+    private double spykeness;
     private double irregularity;
     private WeakReference<Activity> activity;
-    private DataPoint[] graph_point;
     private int turns;
-    private boolean intersection;
 
 
-    public AsyncCreation(Activity activity, int turns, int center_x,int center_y,double spyke, double irregularity,float radius) {
+    /**
+     * Constructor
+     * @param activity activity that launch the async task
+     * @param turns number of turns
+     * @param cX x coordinate of the center
+     * @param cY y coordinate of the center
+     * @param spykeness parameter that express narrow turns density
+     * @param irregularity parameter that express how much segments' length has to be irregular
+     * @param averageRadius average distance from the center
+     */
+    public AsyncCreation(Activity activity, int turns, int cX, int cY, double spykeness, double irregularity, float averageRadius) {
         this.activity = new WeakReference<>(activity);
         this.turns =turns;
-        this.center_x=center_x;
-        this.center_y=center_y;
-        this.spyke =spyke;
+        this.cX = cX;
+        this.cY = cY;
+        this.spykeness =spykeness;
         this.irregularity=irregularity;
-        graph_point = new DataPoint[turns];
-        this.radius=radius;
+        this.averageRadius = averageRadius;
 
     }
 
@@ -52,13 +59,15 @@ public class AsyncCreation extends AsyncTask<Void,Void,Path> {
 
         Path path=new Path();
         irregularity = clip( irregularity, 0,1 ) * 2*Math.PI / (float)turns;
-        spyke = clip(spyke, 0,1 ) * radius;
-        double angleSteps[]=new double[turns];
+        spykeness = clip(spykeness, 0,10 ) * averageRadius;
+
         double lower = (2*Math.PI / turns) - irregularity;
         double upper = (2*Math.PI / turns) + irregularity;
-        System.out.println("lower "+lower+" upper "+upper);
+
         double sum = 0;
         Random random=new Random();
+
+        double[]  angleSteps=new double[turns];
         for(int i=0;i<turns;i++)
         {
             double tmp = random.nextDouble()*(upper - lower+ 1) + lower;
@@ -77,9 +86,9 @@ public class AsyncCreation extends AsyncTask<Void,Void,Path> {
         double angle = random.nextDouble()*2*Math.PI;
         for(int i=0;i<turns;i++)
         {
-            double r_i = clip( random.nextGaussian()* spyke +radius, 30,2*radius);
-            double x = center_x + r_i*Math.cos(angle);
-            double y = 351.0-(center_y + r_i*Math.sin(angle));
+            double randomRadius = clip( random.nextGaussian()* spykeness + averageRadius, 10,2* averageRadius);
+            double x = cX + randomRadius*Math.cos(angle);
+            double y = 314.0-(cY + randomRadius*Math.sin(angle));
             if(i==0)
                 path.moveTo((float)x,(float)y);
             else
@@ -91,12 +100,7 @@ public class AsyncCreation extends AsyncTask<Void,Void,Path> {
         return path;
     }
 
-    private double clip(double x, double min, double max) {
-        if( min > max )   return x;
-        else if( x < min )  return min;
-        else if( x > max ) return max;
-     else           return x;
-    }
+
 
     @Override
     protected void onPostExecute(Path path) {
@@ -118,5 +122,23 @@ public class AsyncCreation extends AsyncTask<Void,Void,Path> {
 
 
 
+    }
+
+    /**
+     * This method allow to bound a variable x
+     * @param x variable
+     * @param min minimum
+     * @param max maximum
+     * @return x if min<=x<=max, max if x>max and min if x<min
+     */
+    private double clip(double x, double min, double max) {
+        if( min > max )
+            return x;
+        else if( x < min )
+            return min;
+        else if( x > max )
+            return max;
+        else
+            return x;
     }
 }
