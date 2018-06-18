@@ -3,7 +3,7 @@
     <string name="help">Help</string>
     <string name="intersection">Intersection</string>
     <string name="turns">Turns</string>
-    <string name="help_message">Select the number of turns wanted and play with spykeness and irregularity parameters(spykeness express narrow turns density and irregularity express how much segments length has to be irregular). Remember that this app simply gives you an idea on the shape of the circuit. For any problem pleas open an Issue on github.com</string>
+    <string name="help_message">Select the number of turns wanted and play with spykeness and irregularity parameters(spykeness express narrow turns density and irregularity express how much segments length has to be irregular). Remember that this app simply gives you an idea on the shape of the circuit. For any problem please open an Issue on github.com or contact me at fsciamdev@gmail.com</string>
     <string name="image_of_the_circuit">Image of the circuit</string>
     <string name="generate_button">generate button</string>
     <string name="spykeness">Spykeness</string>

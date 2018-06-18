@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
         spykeness.setProgress(0);
         pathArrayList=new ArrayList<>();
 
-        next.setActivated(false);
-        previous.setActivated(false);
+        next.setVisibility(View.GONE);
+        previous.setVisibility(View.GONE);
 
         current_circuit=0;
     }
@@ -137,8 +137,8 @@ public class MainActivity extends AppCompatActivity {
             pathArrayList.remove(0);
         pathArrayList.add(path);
         current_circuit=pathArrayList.size()-1;
-        previous.setActivated(true);
-        next.setActivated(false);
+        previous.setVisibility(View.VISIBLE);
+        next.setVisibility(View.GONE);
     }
 
     /**
@@ -171,9 +171,15 @@ public class MainActivity extends AppCompatActivity {
             drawPath(pathArrayList.get(current_circuit));
         }
         if(current_circuit==0)
-            previous.setActivated(false);
+        {
+            previous.setVisibility(View.GONE);
+            next.setVisibility(View.VISIBLE);
+        }
         else
-            previous.setActivated(true);
+        {
+            previous.setVisibility(View.VISIBLE);
+            next.setVisibility(View.VISIBLE);
+        }
     }
     /**
      * Draws the next circuit, if it exists
@@ -181,14 +187,16 @@ public class MainActivity extends AppCompatActivity {
      */
     public void nextCircuit(View view) {
 
-        if(current_circuit+1<pathArrayList.size())
-        {
-            current_circuit+=1;
+        if (current_circuit + 1 < pathArrayList.size()) {
+            current_circuit += 1;
             drawPath(pathArrayList.get(current_circuit));
         }
-        if(current_circuit==pathArrayList.size()-1)
-            next.setActivated(false);
-        else
-            next.setActivated(true);
+        if (current_circuit == pathArrayList.size() - 1) {
+            next.setVisibility(View.GONE);
+            previous.setVisibility(View.VISIBLE);
+        } else {
+            next.setVisibility(View.VISIBLE);
+            previous.setVisibility(View.VISIBLE);
+        }
     }
 }

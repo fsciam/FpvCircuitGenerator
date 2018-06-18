@@ -13,8 +13,9 @@ import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
-
+import static android.graphics.Path.Op.INTERSECT;
 
 
 /**
@@ -23,8 +24,8 @@ import java.util.Random;
 
 public class AsyncCreation extends AsyncTask<Void,Void,Path> {
 
-    private final int cY;
-    private final int cX;
+    private  int cY;
+    private  int cX;
     private final float averageRadius;
     private double spykeness;
     private double irregularity;
@@ -56,9 +57,8 @@ public class AsyncCreation extends AsyncTask<Void,Void,Path> {
 
     @Override
     protected Path doInBackground(Void... voids) {
-
         Path path=new Path();
-        irregularity = clip( irregularity, 0,1 ) * 2*Math.PI / (float)turns;
+        irregularity = clip( irregularity, 0,1 ) * 2*Math.PI ;
         spykeness = clip(spykeness, 0,10 ) * averageRadius;
 
         double lower = (2*Math.PI / turns) - irregularity;
@@ -86,7 +86,7 @@ public class AsyncCreation extends AsyncTask<Void,Void,Path> {
         double angle = random.nextDouble()*2*Math.PI;
         for(int i=0;i<turns;i++)
         {
-            double randomRadius = clip( random.nextGaussian()* spykeness + averageRadius, 10,2* averageRadius);
+            double randomRadius = clip( random.nextGaussian()* spykeness + averageRadius, 25,2* averageRadius);
             double x = cX + randomRadius*Math.cos(angle);
             double y = 314.0-(cY + randomRadius*Math.sin(angle));
             if(i==0)
@@ -98,7 +98,10 @@ public class AsyncCreation extends AsyncTask<Void,Void,Path> {
         }
         path.close();
         return path;
+
     }
+
+
 
 
 

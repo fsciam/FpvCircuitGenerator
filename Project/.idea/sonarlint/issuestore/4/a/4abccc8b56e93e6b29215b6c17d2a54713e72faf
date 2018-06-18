@@ -1,12 +1,0 @@
-
-xsquid:S00116"VRename this field "graph_point" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úä×‘øÿÿÿÿ8 €—Å¿,
-Psquid:S1068"/Remove this unused "graph_point" private field.(Úä×‘øÿÿÿÿ8ï¤éÆ¿,
-ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š¤œ–úÿÿÿÿ8ŒÓñ÷¿,
-Ysquid:S1197"8Move the array designator from the variable to the type.(èãÖ”ÿÿÿÿÿ8œ‚“ø¿,
-usquid:S00116"SRename this field "center_y" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ô¸şÿÿÿÿ8Â¥ô÷¿,
-usquid:S00116"SRename this field "center_x" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜çÌÉÿÿÿÿÿ8¤Æô÷¿,
-Qsquid:S1068"0Remove this unused "intersection" private field.(ÇØáûıÿÿÿÿ8ŒŸó÷¿,
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(ëÎÛä8âëµ˜À,
-ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š¤œ–úÿÿÿÿ8ŒÓñ÷¿,
-ssquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ı„ì¤üÿÿÿÿ8ƒŸ°˜À,
