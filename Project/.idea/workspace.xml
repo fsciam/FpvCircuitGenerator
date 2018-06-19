@@ -9,17 +9,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99adc4b1-7321-4ee5-bccd-f68b4afd835c" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/sciamanna/filippo/fpvcircuitgenerator/ExampleInstrumentedTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/fsciamdev/fpvcircuitgenerator/ExampleInstrumentedTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/sciamanna/filippo/fpvcircuitgenerator/AsyncCreation.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/fsciamdev/fpvcircuitgenerator/AsyncCreation.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/sciamanna/filippo/fpvcircuitgenerator/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/fsciamdev/fpvcircuitgenerator/MainActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/test/java/com/sciamanna/filippo/fpvcircuitgenerator/ExampleUnitTest.java" afterPath="$PROJECT_DIR$/app/src/test/java/com/fsciamdev/fpvcircuitgenerator/ExampleUnitTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4abccc8b56e93e6b29215b6c17d2a54713e72faf" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4abccc8b56e93e6b29215b6c17d2a54713e72faf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/6/b6cc998fe7ca786ca2dff98a4bb4c7caef9edd9d" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/6/b6cc998fe7ca786ca2dff98a4bb4c7caef9edd9d" />
+    <list default="true" id="99adc4b1-7321-4ee5-bccd-f68b4afd835c" name="Default" comment="Some code fixing and package renamed">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../README.md" afterPath="$PROJECT_DIR$/../README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -2214,7 +2205,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529397394424" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529398461521" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2262,7 +2253,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529397394424" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529398461522" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2445,7 +2436,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529397394425" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529398461523" />
       </method>
     </configuration>
     <list size="1">
@@ -2506,7 +2497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529354635819</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Some code fixing and package renamed">
+      <created>1529397451110</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1529397451110</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2589,7 +2587,8 @@
     <MESSAGE value="help message written" />
     <MESSAGE value="old file deleted" />
     <MESSAGE value="algorithm almost finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="algorithm almost finished" />
+    <MESSAGE value="Some code fixing and package renamed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some code fixing and package renamed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
