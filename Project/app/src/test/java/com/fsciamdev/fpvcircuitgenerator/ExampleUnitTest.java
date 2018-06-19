@@ -1,4 +1,4 @@
-package com.sciamanna.filippo.fpvcircuitgenerator;
+package com.fsciamdev.fpvcircuitgenerator;
 
 import org.junit.Test;
 

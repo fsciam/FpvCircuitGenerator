@@ -1,4 +1,4 @@
-package com.sciamanna.filippo.fpvcircuitgenerator;
+package com.fsciamdev.fpvcircuitgenerator;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -13,19 +13,15 @@ import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
-import static android.graphics.Path.Op.INTERSECT;
 
 
 /**
  * This Async class generates and draws a random circuit
  */
 
-public class AsyncCreation extends AsyncTask<Void,Void,Path> {
+public class AsyncCreation extends AsyncTask<Integer,Void,Path> {
 
-    private  int cY;
-    private  int cX;
+
     private final float averageRadius;
     private double spykeness;
     private double irregularity;
@@ -37,17 +33,13 @@ public class AsyncCreation extends AsyncTask<Void,Void,Path> {
      * Constructor
      * @param activity activity that launch the async task
      * @param turns number of turns
-     * @param cX x coordinate of the center
-     * @param cY y coordinate of the center
      * @param spykeness parameter that express narrow turns density
      * @param irregularity parameter that express how much segments' length has to be irregular
      * @param averageRadius average distance from the center
      */
-    public AsyncCreation(Activity activity, int turns, int cX, int cY, double spykeness, double irregularity, float averageRadius) {
+    public AsyncCreation(Activity activity, int turns,double spykeness, double irregularity, float averageRadius) {
         this.activity = new WeakReference<>(activity);
         this.turns =turns;
-        this.cX = cX;
-        this.cY = cY;
         this.spykeness =spykeness;
         this.irregularity=irregularity;
         this.averageRadius = averageRadius;
@@ -55,9 +47,18 @@ public class AsyncCreation extends AsyncTask<Void,Void,Path> {
     }
 
 
+    /**
+     *
+     * @param args args contains center x, center y, height of ImageView in that order
+     * @return Path to be drawn
+     */
     @Override
-    protected Path doInBackground(Void... voids) {
+    protected Path doInBackground(Integer... args) {
         Path path=new Path();
+        int cX=args[0];
+        int cY=args[1];
+        int yHeight=args[2];
+
         irregularity = clip( irregularity, 0,1 ) * 2*Math.PI ;
         spykeness = clip(spykeness, 0,10 ) * averageRadius;
 
@@ -88,7 +89,7 @@ public class AsyncCreation extends AsyncTask<Void,Void,Path> {
         {
             double randomRadius = clip( random.nextGaussian()* spykeness + averageRadius, 25,2* averageRadius);
             double x = cX + randomRadius*Math.cos(angle);
-            double y = 314.0-(cY + randomRadius*Math.sin(angle));
+            double y = yHeight -(cY + randomRadius*Math.sin(angle));
             if(i==0)
                 path.moveTo((float)x,(float)y);
             else

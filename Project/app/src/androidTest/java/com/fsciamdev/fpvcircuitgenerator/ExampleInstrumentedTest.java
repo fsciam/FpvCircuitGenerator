@@ -1,4 +1,4 @@
-package com.sciamanna.filippo.fpvcircuitgenerator;
+package com.fsciamdev.fpvcircuitgenerator;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.sciamanna.filippo.fpvcircuitgenerator", appContext.getPackageName());
+        assertEquals("com.fsciamdev.fpvcircuitgenerator", appContext.getPackageName());
     }
 }

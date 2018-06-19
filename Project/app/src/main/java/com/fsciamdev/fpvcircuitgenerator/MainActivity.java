@@ -1,4 +1,4 @@
-package com.sciamanna.filippo.fpvcircuitgenerator;
+package com.fsciamdev.fpvcircuitgenerator;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         next=findViewById(R.id.next);
         circuit =findViewById(R.id.circuit);
 
-        //Set a blank bitmap inside the imageview
+        //Set a blank bitmap inside the ImageView
         Bitmap bitmap = Bitmap.createBitmap(377, 314, Bitmap.Config.ARGB_8888);
         circuit.setImageBitmap(bitmap);
 
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void generateTrack(View view) {
 
-            new AsyncCreation(this,turns_picker.getValue(),189,157,spykeness.getProgress(),irregularity.getProgress()/10,75).execute();
+            new AsyncCreation(this,turns_picker.getValue(),spykeness.getProgress(),irregularity.getProgress()/10,75).execute(189,157,314);
     }
 
     /**
@@ -137,8 +137,11 @@ public class MainActivity extends AppCompatActivity {
             pathArrayList.remove(0);
         pathArrayList.add(path);
         current_circuit=pathArrayList.size()-1;
-        previous.setVisibility(View.VISIBLE);
-        next.setVisibility(View.GONE);
+        if(current_circuit!=0)
+        {
+            previous.setVisibility(View.VISIBLE);
+            next.setVisibility(View.GONE);
+        }
     }
 
     /**
